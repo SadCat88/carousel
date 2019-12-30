@@ -1,0 +1,38 @@
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden; }
+
+.rating-input .ally-rating .ally-rating__input {
+  position: absolute;
+  left: -9999px; }
+  .rating-input .ally-rating .ally-rating__input:focus ~ .rating-5-stars {
+    box-shadow: 0 0 0 1px #7c7cd4; }
+
+.rating-input .rating-5-stars {
+  display: inline-flex;
+  border-radius: 6px; }
+  .rating-input .rating-5-stars .star {
+    height: 40px;
+    width: 40px;
+    background-image: url("../../components/star.svg"); }
+    .rating-input .rating-5-stars .star:not(:last-child) {
+      margin-right: 5px; }
+    .rating-input .rating-5-stars .star:hover {
+      cursor: pointer;
+      background-image: url("../../components/star_hover.svg"); }
+    .rating-input .rating-5-stars .star.star_fill {
+      background-image: url("../../components/star_fill.svg"); }
+      .rating-input .rating-5-stars .star.star_fill:hover {
+        background-image: url("../../components/star_hover.svg"); }
+    .rating-input .rating-5-stars .star.star_hover {
+      background-image: url("../../components/star_hover.svg"); }
