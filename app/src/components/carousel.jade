@@ -1,0 +1,23 @@
+div.carousel
+  //- === ссылка на карточку по клику на изображении
+  a(href='./components/slider_1.png')
+    //- === ссылка на первое изображение
+    img.carousel__img(src='./components/slider_1.png', alt="Первая картинка" width="270" height="151")
+    //- === описание изображения
+  
+  div.carousel__caption.
+    Изображение № 1
+  
+  //- === стрелка влево
+  button.carousel__arrow.carousel__arrow_left(aria-hidden="true" tabindex="-1")
+  //- === стрелка вправо
+  button.carousel__arrow.carousel__arrow_right(aria-hidden="true" tabindex="-1")
+
+  //- === точки для отслеживания состояния
+  div.carousel__bullets
+    span.bullet.bullet_full
+    span.bullet
+    span.bullet
+    span.bullet
+  
+  //- div.linear

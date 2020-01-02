@@ -1,0 +1,192 @@
+$carouselWidth: (270px*1);
+$carouselHeight: (151px*1);
+$arrowColor: blue;
+$bulletEmpty: green;
+$bulletFull: red;
+$arrowSize: 0.75;
+
+.linear {
+    position: absolute;
+    top: (150px/2);
+    height: 1px;
+    width: 270px;
+    background-color: red;
+}
+
+// === карусель
+.carousel {
+    position: relative;
+
+    width: $carouselWidth;
+    height: $carouselHeight;
+
+    // === отображаемое изображение
+    .carousel__img {
+        width: $carouselWidth;
+        height: $carouselHeight;
+    }
+
+    // === заголовок отображаемой картинки
+    .carousel__caption {
+        position: absolute;
+        top: 5px;
+        right: 15px;
+    }
+
+    // === стрелки для листания карусели
+    .carousel__arrow {
+        position: absolute;
+        top: 0px;
+        // z-index: 2;
+
+        display: block;
+        height: $carouselHeight;
+        width: $carouselWidth*0.155;
+        // ширина затенений по краям карусели
+
+        border: none;
+
+        background: linear-gradient(90deg,
+                rgba(0, 0, 0, 0.5) 0%,
+                rgba(0, 0, 0, 0) 99.99%,
+                rgba(255, 255, 255, 0) 100%);
+
+        // opacity: 0;
+
+        &:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        $arrowLineWidth: 8 * $carouselWidth*0.015 * $arrowSize;
+        $arrowLineHeight: 2 * $carouselWidth*0.015 * $arrowSize;
+
+        &::before,
+        &::after {
+            content: '';
+
+            position: absolute;
+
+            // width: $carouselWidth*0.155;
+            display: block;
+            width: $arrowLineWidth;
+            height: $arrowLineHeight;
+            left: 3px;
+
+            background-color: $arrowColor;
+        }
+
+        &.carousel__arrow_left {
+            left: 0px;
+
+
+
+            &::before {
+                transform: translate(0, -$arrowLineWidth*0.4) rotate(-45deg);
+            }
+
+            &::after {
+                transform: translate(0, $arrowLineWidth*0.14) rotate(45deg);
+            }
+
+
+
+        }
+
+        &.carousel__arrow_right {
+            right: 0px;
+            transform: scaleX(-1);
+
+            &::before {
+                transform: translate(0, -156%) rotate(-45deg);
+            }
+
+            &::after {
+                transform: translate(0, 56%) rotate(45deg);
+            }
+
+        }
+    }
+
+    // === индикатор состояния карусели (точки)
+    .carousel__bullets {
+        position: absolute;
+        bottom: 0px;
+        right: 15px;
+
+        .bullet {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin-left: 3px;
+
+            border: 1px solid $bulletEmpty;
+            border-radius: 50%;
+
+            &.bullet_full {
+                background-color: $bulletFull;
+            }
+        }
+    }
+}
+
+
+
+// // arrow link for images-card
+// .item-images__arrow {
+
+//     &.item-images__arrow_left {
+//         left: 0;
+
+//         border-radius: 4px 0 0 0;
+
+//         &::after {
+//             content: "expand_more";
+
+//             position: absolute;
+//             top: 50%;
+//             right: 50%;
+
+//             display: block;
+//             width: 24px;
+//             height: 24px;
+
+
+//             color: lightblue;
+//             font-size: 24px;
+//             line-height: 24px;
+
+//             transform: rotate(90deg) translate(-50%, -50%);
+//         }
+//     }
+
+//     &.item-images__arrow_right {
+//         right: 0;
+
+
+//         border-radius: 0 4px 0 0;
+
+//         &::after {
+//             content: "expand_more";
+
+//             position: absolute;
+//             top: 50%;
+//             right: 50%;
+
+//             display: block;
+//             width: 24px;
+//             height: 24px;
+
+
+//             color: pink;
+//             font-size: 24px;
+//             line-height: 24px;
+
+//             transform: rotate(-90deg) translate(50%, 50%);
+//         }
+//     }
+// }
