@@ -1,13 +1,16 @@
-div.carousel
+div(data-qty-img="4").carousel
   //- === ссылка на карточку по клику на изображении
-  a(href='./components/slider_1.png')
+  a(href="#")
     //- === ссылка на первое изображение
-    img.carousel__img(src='./components/slider_1.png', alt="Первая картинка" width="270" height="151")
+    img.carousel__img(src="./components/img/itemName_1/pictureName_1.png" alt="Картинка для карусели" width="270" height="151")
     //- === описание изображения
-  
-  div.carousel__caption.
-    Изображение № 1
-  
+
+  div.carousel__caption
+    span Описание № 1
+    span._hidden Описание № 2
+    span._hidden Описание № 3
+    span._hidden Описание № 4
+
   //- === стрелка влево
   button.carousel__arrow.carousel__arrow_left(aria-hidden="true" tabindex="-1")
   //- === стрелка вправо
@@ -19,5 +22,32 @@ div.carousel
     span.bullet
     span.bullet
     span.bullet
-  
+
+
+
+div(data-qty-img="3").carousel
+  //- === ссылка на карточку по клику на изображении
+  a(href="#")
+    //- === ссылка на первое изображение
+    img.carousel__img(src="./components/img/itemName_1/pictureName_1.png" alt="Картинка для карусели" width="270" height="151")
+    //- === описание изображения
+
+  div.carousel__caption
+    span Описание № 1
+    span._hidden Описание № 2
+    span._hidden Описание № 3
+    span._hidden Описание № 4
+
+  //- === стрелка влево
+  button.carousel__arrow.carousel__arrow_left(aria-hidden="true" tabindex="-1")
+  //- === стрелка вправо
+  button.carousel__arrow.carousel__arrow_right(aria-hidden="true" tabindex="-1")
+
+  //- === точки для отслеживания состояния
+  div.carousel__bullets
+    span.bullet.bullet_full
+    span.bullet
+    span.bullet
+    span.bullet
+
   //- div.linear

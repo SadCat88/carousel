@@ -31,6 +31,10 @@ $arrowSize: 0.75;
         position: absolute;
         top: 5px;
         right: 15px;
+
+        ._hidden {
+            display: none;
+        }
     }
 
     // === стрелки для листания карусели

@@ -57,6 +57,8 @@
     position: absolute;
     top: 5px;
     right: 15px; }
+    .carousel .carousel__caption ._hidden {
+      display: none; }
   .carousel .carousel__arrow {
     position: absolute;
     top: 0px;
