@@ -1,53 +1,48 @@
-div(data-qty-img="4").carousel
-  //- === ссылка на карточку по клику на изображении
-  a(href="#")
-    //- === ссылка на первое изображение
-    img.carousel__img(src="./components/img/itemName_1/pictureName_1.png" alt="Картинка для карусели" width="270" height="151")
-    //- === описание изображения
+//- to use mixin:
+//- copy-paste this in index.pug ↓
+//- ============================================================================
+//- 
+//- +carousel( {
+//-   qtyImg		: "4",
+//-   linkCard	: "#",
+//-   captions	: [ 
+//-     "Описание 1",
+//-     "Описание 2",
+//-     "Описание 3",
+//-     "Описание 4",
+//-     ]
+//-   } )
+//- 
+//- ============================================================================
 
-  div.carousel__caption
-    span Описание № 1
-    span._hidden Описание № 2
-    span._hidden Описание № 3
-    span._hidden Описание № 4
+mixin carousel(data)
+  div(data-qty-img=`${data.qtyImg}`).carousel
+    //- === ссылка на карточку по клику на изображении
+    a(href=`${data.linkCard}`)
+      //- === ссылка на первое изображение
+      img.carousel__img(src="./components/img/itemName_1/pictureName_1.png" alt="Картинка для карусели" width="270" height="151")
+      //- === описание изображения
 
-  //- === стрелка влево
-  button.carousel__arrow.carousel__arrow_left(aria-hidden="true" tabindex="-1")
-  //- === стрелка вправо
-  button.carousel__arrow.carousel__arrow_right(aria-hidden="true" tabindex="-1")
+    div.carousel__caption
+      - for (var i = 0; i < data.qtyImg; i++) {
+        - if ( i == 0) {
+          span.caption=`${data.captions[i]}`
+        - } else {
+          span.caption.caption_hidden=`${data.captions[i]}`
+        - }
+      - }
 
-  //- === точки для отслеживания состояния
-  div.carousel__bullets
-    span.bullet.bullet_full
-    span.bullet
-    span.bullet
-    span.bullet
+    //- === стрелка влево
+    button.carousel__arrow.carousel__arrow_left(aria-hidden="true" tabindex="-1")
+    //- === стрелка вправо
+    button.carousel__arrow.carousel__arrow_right(aria-hidden="true" tabindex="-1")
 
-
-
-div(data-qty-img="3").carousel
-  //- === ссылка на карточку по клику на изображении
-  a(href="#")
-    //- === ссылка на первое изображение
-    img.carousel__img(src="./components/img/itemName_1/pictureName_1.png" alt="Картинка для карусели" width="270" height="151")
-    //- === описание изображения
-
-  div.carousel__caption
-    span Описание № 1
-    span._hidden Описание № 2
-    span._hidden Описание № 3
-    span._hidden Описание № 4
-
-  //- === стрелка влево
-  button.carousel__arrow.carousel__arrow_left(aria-hidden="true" tabindex="-1")
-  //- === стрелка вправо
-  button.carousel__arrow.carousel__arrow_right(aria-hidden="true" tabindex="-1")
-
-  //- === точки для отслеживания состояния
-  div.carousel__bullets
-    span.bullet.bullet_full
-    span.bullet
-    span.bullet
-    span.bullet
-
-  //- div.linear
+    //- === точки для отслеживания состояния
+    div.carousel__bullets
+      - for (var i = 0; i < data.qtyImg; i++) {
+        - if ( i == 0) {
+          span.bullet.bullet_full
+        - } else {
+          span.bullet
+        - }
+      - }

@@ -16,25 +16,17 @@ const flippingCarousel = function(event) {
 		$rootElementForTarget
 	);
 	// корневой элемент
-	
+
 	let $leftArrow = $rootElementForTarget.querySelector('.carousel__arrow_left');
 	let $rightArrow = $rootElementForTarget.querySelector(
 		'.carousel__arrow_right'
 	);
 
-	let qtyImg = $rootElementForTarget.dataset.qtyImg;
-	console.log('TCL: flippingCarousel -> qtyImg', qtyImg);
-	// количество картинок в карусели на которой произошло событие
-
-	let $carouselImg = $rootElementForTarget.querySelector('.carousel__img');
-	console.log('TCL: flippingCarousel -> $carouselImg', $carouselImg);
-	// элемент - изображение
-
 	if (event.target == $leftArrow) {
-		displayCarouselChanges($carouselImg, qtyImg, 'decrease');
+		displayCarouselChanges($rootElementForTarget, 'decrease');
 	}
 	if (event.target == $rightArrow) {
-		displayCarouselChanges($carouselImg, qtyImg, 'increase');
+		displayCarouselChanges($rootElementForTarget, 'increase');
 	}
 };
 
@@ -46,10 +38,19 @@ const flippingCarousel = function(event) {
  * Вычисляет новую строку.
  * Меняет атрибут у элемента с изображением.
  * </pre>
- * @param {object} $carouselImg - Элемент DOM
+ * @param {object} $carousel - Элемент DOM
+ * @param {string} change - Действие, которое необходимо произвести
  */
-const displayCarouselChanges = function($carouselImg, qtyImg, change) {
+const displayCarouselChanges = function($carousel, change) {
 	// === переменные ==========================================================
+
+	let qtyImg = $carousel.dataset.qtyImg;
+	console.log('TCL: flippingCarousel -> qtyImg', qtyImg);
+	// количество картинок в карусели на которой произошло событие
+
+	let $carouselImg = $carousel.querySelector('.carousel__img');
+	console.log('TCL: flippingCarousel -> $carouselImg', $carouselImg);
+	// элемент - изображение
 
 	// === путь к актуальной картинке в элементе на котором произошло событие
 	let actualPicturePath = $carouselImg.getAttribute('src');
@@ -73,6 +74,13 @@ const displayCarouselChanges = function($carouselImg, qtyImg, change) {
 		lastPoint,
 		actualPicturePath.length
 	);
+
+	// === массив описаний к картинкам
+	let $captions = $carousel.querySelectorAll('.carousel__caption .caption');
+	console.log('TCL: displayCarouselChanges -> $captions', $captions);
+
+	// === массив индикаторов
+	let $bullets = $carousel.querySelectorAll('.carousel__bullets .bullet');
 
 	// === действия ============================================================
 	let previousNum = parseInt(actualPictureNum, 10);
@@ -106,9 +114,25 @@ const displayCarouselChanges = function($carouselImg, qtyImg, change) {
 	}
 	console.log('TCL: displayCarouselChanges -> nextNum', nextNum);
 
+	console.log(
+		'TCL: displayCarouselChanges -> $captions[previousNum]',
+		$captions[previousNum]
+	);
+	console.log(
+		'TCL: displayCarouselChanges -> $captions[nextNum]',
+		$captions[nextNum]
+	);
 	// === установить новую картинку
 	$carouselImg.setAttribute(
 		'src',
 		`${relativePathFirstPart}${nextNum}${relativePathLastPart}`
 	);
+
+	// === установить верное описание
+	$captions[previousNum - 1].classList.add('caption_hidden');
+	$captions[nextNum - 1].classList.remove('caption_hidden');
+
+	// === установить индикатор в нужное положение
+	$bullets[previousNum - 1].classList.remove('bullet_full');
+	$bullets[nextNum - 1].classList.add('bullet_full');
 };

@@ -27,6 +27,27 @@ html(lang="ru")
           Прокатись на нашей карусели!<br>
         .example 
           include ./components/carousel.jade
+          
+          +carousel( {
+            qtyImg		: "4",
+            linkCard	: "#",
+            captions	: [ 
+              "Описание 1",
+              "Описание 2",
+              "Описание 3",
+              "Описание 4",
+              ]
+            } )
+            
+          +carousel( {
+            qtyImg		: "3",
+            linkCard	: "#",
+            captions	: [ 
+              "Описание 1",
+              "Описание 2",
+              "Описание 3",
+              ]
+            } )
 
     footer.footer 
       .wrapper

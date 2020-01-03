@@ -1,9 +1,11 @@
-$carouselWidth: (270px*1);
-$carouselHeight: (151px*1);
-$arrowColor: blue;
-$bulletEmpty: green;
-$bulletFull: red;
-$arrowSize: 0.75;
+// === settings ================================================================
+$carouselWidth: 270px;
+$carouselHeight: 151px;
+$arrowColor: #ffbde0;
+$bulletEmpty: #817bf7;
+$bulletFull: #817bf7;
+$arrowSize: 0.5;
+// =============================================================================
 
 .linear {
     position: absolute;
@@ -32,7 +34,16 @@ $arrowSize: 0.75;
         top: 5px;
         right: 15px;
 
-        ._hidden {
+        .caption {
+            text-shadow:
+                0px 0px 10px rgba(255, 255, 255, 1),
+                0px 0px 10px rgba(255, 255, 255, 1),
+                0px 0px 5px rgba(255, 255, 255, 0.4),
+                0px 0px 2px rgba(255, 255, 255, 0.4),
+            ;
+        }
+
+        .caption_hidden {
             display: none;
         }
     }
@@ -55,7 +66,7 @@ $arrowSize: 0.75;
                 rgba(0, 0, 0, 0) 99.99%,
                 rgba(255, 255, 255, 0) 100%);
 
-        // opacity: 0;
+        opacity: 0;
 
         &:hover {
             opacity: 1;
@@ -74,20 +85,17 @@ $arrowSize: 0.75;
             content: '';
 
             position: absolute;
-
-            // width: $carouselWidth*0.155;
+            left: $carouselWidth*0.155/2 -$arrowLineWidth/2;
             display: block;
             width: $arrowLineWidth;
             height: $arrowLineHeight;
-            left: 3px;
 
+            border-radius: 6px;
             background-color: $arrowColor;
         }
 
         &.carousel__arrow_left {
             left: 0px;
-
-
 
             &::before {
                 transform: translate(0, -$arrowLineWidth*0.4) rotate(-45deg);
@@ -96,9 +104,6 @@ $arrowSize: 0.75;
             &::after {
                 transform: translate(0, $arrowLineWidth*0.14) rotate(45deg);
             }
-
-
-
         }
 
         &.carousel__arrow_right {
@@ -130,6 +135,8 @@ $arrowSize: 0.75;
 
             border: 1px solid $bulletEmpty;
             border-radius: 50%;
+
+            box-shadow: 0px 0px 4px 1px white;
 
             &.bullet_full {
                 background-color: $bulletFull;

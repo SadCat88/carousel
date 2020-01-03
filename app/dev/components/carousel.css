@@ -16,7 +16,9 @@
     position: absolute;
     top: 5px;
     right: 15px; }
-    .carousel .carousel__caption ._hidden {
+    .carousel .carousel__caption .caption {
+      text-shadow: 0px 0px 10px white, 0px 0px 10px white, 0px 0px 5px rgba(255, 255, 255, 0.4), 0px 0px 2px rgba(255, 255, 255, 0.4); }
+    .carousel .carousel__caption .caption_hidden {
       display: none; }
   .carousel .carousel__arrow {
     position: absolute;
@@ -25,7 +27,8 @@
     height: 151px;
     width: 41.85px;
     border: none;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%); }
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0; }
     .carousel .carousel__arrow:hover {
       opacity: 1;
       cursor: pointer; }
@@ -34,17 +37,18 @@
     .carousel .carousel__arrow::before, .carousel .carousel__arrow::after {
       content: '';
       position: absolute;
+      left: 12.825px;
       display: block;
-      width: 24.3px;
-      height: 6.075px;
-      left: 3px;
-      background-color: blue; }
+      width: 16.2px;
+      height: 4.05px;
+      border-radius: 6px;
+      background-color: #ffbde0; }
     .carousel .carousel__arrow.carousel__arrow_left {
       left: 0px; }
       .carousel .carousel__arrow.carousel__arrow_left::before {
-        transform: translate(0, -9.72px) rotate(-45deg); }
+        transform: translate(0, -6.48px) rotate(-45deg); }
       .carousel .carousel__arrow.carousel__arrow_left::after {
-        transform: translate(0, 3.402px) rotate(45deg); }
+        transform: translate(0, 2.268px) rotate(45deg); }
     .carousel .carousel__arrow.carousel__arrow_right {
       right: 0px;
       transform: scaleX(-1); }
@@ -61,7 +65,8 @@
       width: 8px;
       height: 8px;
       margin-left: 3px;
-      border: 1px solid green;
-      border-radius: 50%; }
+      border: 1px solid #817bf7;
+      border-radius: 50%;
+      box-shadow: 0px 0px 4px 1px white; }
       .carousel .carousel__bullets .bullet.bullet_full {
-        background-color: red; }
+        background-color: #817bf7; }
